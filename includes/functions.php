@@ -175,7 +175,7 @@ if (!function_exists('responsive_setup')):
 	        // Header image flex width
 		   'flex-width'             => true,
 	        // Header image width (in pixels)
-	       'width'				    => 300,
+	       'width'				    => 500,
 		    // Header image flex height
 		   'flex-height'            => true,
 	        // Header image height (in pixels)

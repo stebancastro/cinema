@@ -49,7 +49,27 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 	?>
 
 	<div id="featured" class="grid col-940">
-	
+		<!--MAIN PAGE SLIDER-->
+		<div id="featured-image"  class="grid col-940">
+			<?php $featured_content = ( !empty( $responsive_options['featured_content'] ) ) ? $responsive_options['featured_content'] : '<img class="aligncenter" src="' . get_template_directory_uri() . '/images/featured-image.png" width="" height="300" alt="" />'; ?>
+							
+			<?php echo do_shortcode( $featured_content ); ?>
+		</div>
+		<div class="grid col-940">
+        <?php responsive_widgets(); // above widgets hook ?>
+            
+			<?php if (!dynamic_sidebar('home-widget-1')) : ?>
+            <div class="widget-wrapper">
+            
+                <div class="widget-title-home"><h3><?php _e('Home Widget 1', 'responsive'); ?></h3></div>
+                <div class="textwidget"><?php _e('This is your third home widget box. To edit please go to Appearance > Widgets and choose 8th widget from the top in area 8 called Home Widget 3. Title is also manageable from widgets as well.','responsive'); ?></div>
+        
+			</div><!-- end of .widget-wrapper -->
+			<?php endif; //end of home-widget-3 ?>
+		</div>
+
+		<!--MAIN PAGE DETAILS-->
+		<div class="grid col-940">
 		<div class="grid col-460">
 
 			<h1 class="featured-title">
@@ -57,7 +77,7 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 				if ( isset( $responsive_options['home_headline'] ) && $db && $empty )
 					echo $responsive_options['home_headline'];
 				else
-					_e( 'Hello, World!', 'responsive' );
+					_e( '', 'responsive' );
 				?>
 			</h1>
 			
@@ -66,16 +86,21 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 				if ( isset( $responsive_options['home_subheadline'] ) && $db && $empty )
 					echo $responsive_options['home_subheadline'];
 				else
-					_e( 'Your H2 subheadline here', 'responsive' );
+					_e( '', 'responsive' );
 				?>
 			</h2>
 			
-			<p>
+			
+			
+		</div><!-- end of .col-460 -->
+
+		<div class="grid col-460 fit">
+		  <p>
 				<?php
 				if ( isset( $responsive_options['home_content_area'] ) && $db && $empty )
 					echo do_shortcode( $responsive_options['home_content_area'] );
 				else
-					_e( 'Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like.','responsive' );
+					_e( '' );
 				?>
 			</p>
 			
@@ -88,24 +113,17 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 						if( isset( $responsive_options['cta_text'] ) && $db && $empty )
 							echo $responsive_options['cta_text']; 
 						else
-							_e('Call to Action','responsive');
+							_e('','responsive');
 						?>
 					</a>
 				
 				</div><!-- end of .call-to-action -->
 
 			<?php endif; ?>         
-			
-		</div><!-- end of .col-460 -->
-
-		<div id="featured-image" class="grid col-460 fit">
 		  
-		  <?php $featured_content = ( !empty( $responsive_options['featured_content'] ) ) ? $responsive_options['featured_content'] : '<img class="aligncenter" src="' . get_template_directory_uri() . '/images/featured-image.png" width="440" height="300" alt="" />'; ?>
-							
-			<?php echo do_shortcode( $featured_content ); ?>
 									
 		</div><!-- end of #featured-image --> 
-	
+		</div>
 	</div><!-- end of #featured -->
                
 	<?php 
