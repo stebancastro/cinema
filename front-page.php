@@ -127,7 +127,6 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 	</div><!-- end of #featured -->
                
 	<?php 
-	get_sidebar('home');
 	get_footer(); 
 }
 ?>
